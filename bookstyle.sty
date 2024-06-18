@@ -1,0 +1,61 @@
+\ProvidesPackage{mybookstyle}
+\usepackage{fontspec}
+\usepackage{titlesec}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{emptypage}
+\usepackage[normalem]{ulem}
+\usepackage{float}
+\usepackage{graphicx}
+% FONTS
+\setmainfont{Alegreya}[
+    Path=./fonts/alegreya/,
+    Extension = .ttf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-Italic,
+    BoldItalicFont=*-BoldItalic,
+    SmallCapsFont=*SC-Regular,
+    SmallCapsFeatures={Letters=SmallCaps}
+]
+\setmonofont{CutiveMono}[
+    Path=./fonts/cutive-mono/,
+    Extension = .ttf,
+    UprightFont=*-Regular
+]
+
+\newfontfamily{\handwriting}{DancingScript}[
+  Path=./fonts/dancing-script/,
+  Extension = .ttf,
+  UprightFont=*-Regular,
+  BoldFont=*-Bold
+]
+% HEADERS
+\let\oldauthor\author
+\let\oldtitle\title
+\renewcommand{\author}[1]{\newcommand{\theauthor}{#1}\oldauthor{#1}}
+\renewcommand{\title}[1]{\newcommand{\thebook}{#1}\oldtitle{#1}}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt} % no line in header area
+%\fancyhead[CE]{\MakeUppercase{\theauthor}} % author name on the left of even pages
+%\fancyhead[CO]{\MakeUppercase{\thebook}} % book title on the right of odd pages
+\fancyhead[C]{\MakeUppercase{\ifodd\value{page} \theauthor\else \thebook\fi}} 
+\fancyfoot[C]{\thepage}
+% ALIGNMENT
+% Centering and making chapters uppercase
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\centering}
+  {\MakeUppercase{\chaptertitlename\ \thechapter}}{20pt}{\Huge\MakeUppercase}
+% Centering and making sections uppercase
+\titleformat{\section}
+  {\normalfont\Large\bfseries\centering}
+  {\MakeUppercase{\thesection}}{1em}{\Large\MakeUppercase}
+% ASTERISMS
+\newcommand{\asterism}{
+  \noindent
+  \makebox[\linewidth]{
+    ***
+  }
+}
+\newcommand{\sectionbreak}{\clearpage}

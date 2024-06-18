@@ -1,0 +1,28 @@
+% !TeX root = book.tex
+\documentclass[oneside]{book}
+\usepackage{bookstyle}
+\input{metadata.tex}
+
+\begin{document}
+\frontmatter
+\begin{titlepage}
+\centering
+\vspace*{\fill}
+\MakeUppercase{\Huge\bfseries\thebook} \\
+~ \\
+\MakeUppercase{\Large\theauthor} 
+\vspace*{\fill}
+\end{titlepage}
+\chapter*{\thebook}
+\thispagestyle{empty}
+\input{frontmatter/blurb.tex}
+\chapter*{}
+\thispagestyle{empty}
+\input{frontmatter/dedication.tex}
+\mainmatter
+\input{chapters.tex}
+\chapter*{Epilogue}
+\input{frontmatter/epilogue.tex}
+\chapter*{Acknowledgements}
+\input{frontmatter/acknowledments.tex}
+\end{document}
